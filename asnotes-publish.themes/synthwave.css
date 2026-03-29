@@ -1,0 +1,543 @@
+/* AS Notes synthwave retro theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* -- Layout grid -------------------------------------------------- */
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    font-family: 'Share Tech Mono', 'Consolas', 'Courier New', monospace;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #d4c5e2;
+    background: #08060d;
+}
+
+/* -- Header / footer ---------------------------------------------- */
+
+header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+footer {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: #0e0b16;
+    border-bottom: 2px solid #7b5ea7;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%);
+}
+
+.site-header .site-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #c792ea;
+    text-decoration: none;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.site-header .site-title:hover {
+    color: #ff7eb3;
+    text-shadow: 0 0 8px rgba(255, 126, 179, 0.5);
+}
+
+.site-header .site-logo {
+    flex-shrink: 0;
+}
+
+.site-footer {
+    padding: 1rem 1.5rem;
+    border-top: 2px solid #7b5ea7;
+    background: #0e0b16;
+    font-size: 0.85rem;
+    color: #7a6c8a;
+    text-align: center;
+    clip-path: polygon(0 0, 6px 0, 0 6px, 0 100%, 100% 100%, 100% 0);
+}
+
+.site-footer a {
+    color: #7fdbca;
+}
+
+.site-footer a:hover {
+    text-shadow: 0 0 6px rgba(127, 219, 202, 0.5);
+}
+
+/* -- Nav toggle --------------------------------------------------- */
+
+.nav-toggle {
+    position: fixed;
+    top: 0.6rem;
+    right: 1.5rem;
+    z-index: 1001;
+    background: #0e0b16;
+    border: 2px solid #7b5ea7;
+    color: #c792ea;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0;
+    line-height: 1;
+}
+
+.nav-toggle:hover {
+    background: #1a1028;
+    border-color: #ff7eb3;
+    color: #ff7eb3;
+    box-shadow: 0 0 8px rgba(255, 126, 179, 0.3);
+}
+
+/* -- Nav backdrop ------------------------------------------------- */
+
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 6, 13, 0.8);
+    z-index: 999;
+}
+
+body.nav-open .nav-backdrop {
+    display: block;
+}
+
+/* -- Flyout sidebar nav ------------------------------------------- */
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: #0e0b16;
+    border-right: 2px solid #7b5ea7;
+    padding: 1.5rem 1rem;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+body.nav-open .site-nav {
+    transform: translateX(0);
+}
+
+.site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav ul li {
+    margin: 0.2rem 0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    cursor: pointer;
+    border-left: 2px solid transparent;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.site-nav ul li a {
+    text-decoration: none;
+    color: #b0a3c0;
+}
+
+.site-nav ul li a:hover {
+    text-decoration: none;
+}
+
+.site-nav ul li:hover {
+    background: #1a1028;
+    border-left-color: #ff7eb3;
+}
+
+.site-nav ul li:hover a {
+    color: #ff7eb3;
+    text-shadow: 0 0 6px rgba(255, 126, 179, 0.3);
+}
+
+.site-nav ul li.nav-current {
+    background: #1a1028;
+    border-left-color: #c792ea;
+    font-weight: 600;
+}
+
+.site-nav ul li.nav-current a {
+    color: #c792ea;
+    text-shadow: 0 0 6px rgba(199, 146, 234, 0.3);
+}
+
+/* -- Content ------------------------------------------------------ */
+
+article {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2rem 3rem;
+    max-width: 900px;
+    overflow-x: auto;
+}
+
+article.markdown-body {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2rem 3rem;
+    max-width: 900px;
+    overflow-x: auto;
+}
+
+article.blog-post {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2rem 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* -- Typography --------------------------------------------------- */
+
+h1, h2, h3, h4 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 0.5px;
+}
+
+h1 {
+    color: #ff7eb3;
+    font-size: 1.4rem;
+    text-shadow: 0 0 12px rgba(255, 126, 179, 0.3);
+    border-bottom: 2px solid #2a1f3d;
+    padding-bottom: 12px;
+}
+
+h2 {
+    color: #7fdbca;
+    font-size: 1rem;
+    text-shadow: 0 0 10px rgba(127, 219, 202, 0.25);
+}
+
+h3 {
+    color: #c792ea;
+    font-size: 0.85rem;
+}
+
+h4 {
+    color: #ffd580;
+    font-size: 0.75rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #7fdbca;
+    text-decoration: none;
+    transition: color 0.15s, text-shadow 0.15s;
+}
+
+a:hover {
+    color: #a6f0e0;
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(127, 219, 202, 0.5);
+}
+
+strong {
+    color: #e8d5f5;
+}
+
+em {
+    color: #c3b1d4;
+}
+
+blockquote {
+    border-left: 3px solid #7b5ea7;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    background: #0e0b16;
+    color: #b0a3c0;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #2a1f3d;
+    margin: 2rem 0;
+}
+
+/* -- Lists -------------------------------------------------------- */
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin: 0.3rem 0;
+}
+
+li::marker {
+    color: #7b5ea7;
+}
+
+/* -- Tables ------------------------------------------------------- */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+th {
+    background: #1a1028;
+    color: #c792ea;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    text-align: left;
+    padding: 10px 12px;
+    border: 2px solid #2a1f3d;
+}
+
+td {
+    padding: 8px 12px;
+    border: 2px solid #2a1f3d;
+}
+
+tr:nth-child(even) {
+    background: #0e0b16;
+}
+
+/* -- Code --------------------------------------------------------- */
+
+code {
+    background: #1a1028;
+    padding: 2px 6px;
+    border-radius: 0;
+    font-size: 85%;
+    color: #ffd580;
+    border: 1px solid #2a1f3d;
+}
+
+pre {
+    background: #0e0b16;
+    padding: 16px;
+    border-radius: 0;
+    border-left: 3px solid #c792ea;
+    border: 2px solid #2a1f3d;
+    border-left: 3px solid #c792ea;
+    overflow-x: auto;
+    position: relative;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    border: none;
+    color: #d4c5e2;
+}
+
+/* -- Images ------------------------------------------------------- */
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #2a1f3d;
+}
+
+/* -- Table of contents -------------------------------------------- */
+
+.toc {
+    background: #0e0b16;
+    border: 2px solid #7b5ea7;
+    border-radius: 0;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.toc summary {
+    font-weight: 600;
+    cursor: pointer;
+    color: #c792ea;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.toc ul {
+    margin: 8px 0 0 0;
+}
+
+.toc li {
+    margin: 4px 0;
+}
+
+.toc a {
+    color: #b0a3c0;
+}
+
+.toc a:hover {
+    color: #ff7eb3;
+    text-shadow: 0 0 6px rgba(255, 126, 179, 0.3);
+}
+
+/* -- Blog date ---------------------------------------------------- */
+
+.page-date {
+    display: block;
+    color: #7b5ea7;
+    font-size: 0.85em;
+    margin-bottom: 16px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+/* -- Missing page ------------------------------------------------- */
+
+.missing-page {
+    color: #ff6b8a;
+    font-style: italic;
+}
+
+/* -- Blog layout (single column, nav below content) --------------- */
+
+body[data-layout="blog"] {
+    display: block;
+}
+
+body[data-layout="blog"] article.blog-post {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+}
+
+body[data-layout="blog"] .nav-toggle,
+body[data-layout="blog"] .nav-backdrop {
+    display: none;
+}
+
+body[data-layout="blog"] .site-nav {
+    position: static;
+    width: auto;
+    transform: none;
+    transition: none;
+    border-right: none;
+    border-top: 2px solid #7b5ea7;
+    padding: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+body[data-layout="blog"] .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+}
+
+/* -- Scrollbar ---------------------------------------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #08060d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a1f3d;
+    border: 1px solid #7b5ea7;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3d2e57;
+}
+
+/* -- Selection ---------------------------------------------------- */
+
+::selection {
+    background: #7b5ea7;
+    color: #f0e6ff;
+}
+
+/* -- Desktop: static sidebar -------------------------------------- */
+
+@media (min-width: 701px) {
+    body {
+        grid-template-columns: 260px 1fr;
+    }
+
+    .nav-toggle,
+    .nav-backdrop {
+        display: none;
+    }
+
+    .site-nav {
+        position: static;
+        transform: none;
+        transition: none;
+        z-index: auto;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    article,
+    article.markdown-body {
+        grid-column: 2;
+    }
+
+    article.blog-post {
+        grid-column: 2;
+    }
+}
+
+/* -- Mobile ------------------------------------------------------- */
+
+@media (max-width: 700px) {
+    article,
+    article.markdown-body,
+    article.blog-post {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 0.85rem;
+    }
+
+    h3 {
+        font-size: 0.75rem;
+    }
+}

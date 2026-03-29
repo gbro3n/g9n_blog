@@ -5,7 +5,7 @@
     "layout": "blog",
     "layouts": "./asnotes-publish.layouts",
     "includes": "./asnotes-publish.includes",
-    "theme": "dark",
+    "theme": "synthwave",
     "themes": "./asnotes-publish.themes",
     "baseUrl": "",
     "retina": false,
