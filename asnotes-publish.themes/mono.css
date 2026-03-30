@@ -1,0 +1,475 @@
+/* AS Notes mono theme — white on black, fixed-width */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* -- Layout grid -------------------------------------------------- */
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    font-family: 'IBM Plex Mono', 'Consolas', 'SFMono-Regular', 'Liberation Mono', monospace;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    background: #000000;
+}
+
+/* -- Header / footer ---------------------------------------------- */
+
+header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+}
+
+footer {
+    grid-column: 1 / -1;
+    grid-row: 3;
+}
+
+.site-header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: #0a0a0a;
+    border-bottom: 1px solid #333;
+}
+
+.site-header .site-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-header .site-title:hover {
+    color: #999;
+}
+
+.site-header .site-logo {
+    flex-shrink: 0;
+}
+
+.site-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #333;
+    background: #0a0a0a;
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+}
+
+.site-footer a {
+    color: #999;
+}
+
+.site-footer a:hover {
+    color: #ffffff;
+}
+
+/* -- Nav toggle --------------------------------------------------- */
+
+.nav-toggle {
+    position: fixed;
+    top: 0.6rem;
+    right: 1.5rem;
+    z-index: 1001;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0;
+    line-height: 1;
+}
+
+.nav-toggle:hover {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+/* -- Nav backdrop ------------------------------------------------- */
+
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+body.nav-open .nav-backdrop {
+    display: block;
+}
+
+/* -- Flyout sidebar nav ------------------------------------------- */
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: #0a0a0a;
+    border-right: 1px solid #333;
+    padding: 1.5rem 1rem;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+body.nav-open .site-nav {
+    transform: translateX(0);
+}
+
+.site-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav ul li {
+    margin: 0.2rem 0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.site-nav ul li a {
+    text-decoration: none;
+    color: #999;
+}
+
+.site-nav ul li a:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.site-nav ul li:hover {
+    background: #1a1a1a;
+}
+
+.site-nav ul li:hover a {
+    color: #ffffff;
+}
+
+.site-nav ul li.nav-current {
+    background: #1a1a1a;
+    font-weight: 600;
+}
+
+.site-nav ul li.nav-current a {
+    color: #ffffff;
+}
+
+/* -- Content ------------------------------------------------------ */
+
+article {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2rem 3rem;
+    max-width: 900px;
+    overflow-x: auto;
+}
+
+article.markdown-body {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2rem 3rem;
+    max-width: 900px;
+    overflow-x: auto;
+}
+
+article.blog-post {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 2rem 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* -- Typography --------------------------------------------------- */
+
+h1, h2, h3, h4 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+h1 {
+    border-bottom: 1px solid #333;
+    padding-bottom: 12px;
+}
+
+a {
+    color: #b0b0b0;
+    text-decoration: underline;
+    text-decoration-color: #444;
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration-color: #999;
+}
+
+strong {
+    color: #ffffff;
+}
+
+blockquote {
+    border-left: 2px solid #555;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    color: #999;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 2rem 0;
+}
+
+/* -- Lists -------------------------------------------------------- */
+
+ul, ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    margin: 0.3rem 0;
+}
+
+li::marker {
+    color: #555;
+}
+
+/* -- Tables ------------------------------------------------------- */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+th {
+    background: #111;
+    color: #ffffff;
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid #333;
+    font-weight: 600;
+}
+
+td {
+    padding: 8px 12px;
+    border: 1px solid #333;
+}
+
+tr:nth-child(even) {
+    background: #0a0a0a;
+}
+
+/* -- Code --------------------------------------------------------- */
+
+code {
+    background: #111;
+    padding: 2px 6px;
+    border-radius: 0;
+    font-size: 85%;
+    color: #ccc;
+    border: 1px solid #222;
+}
+
+pre {
+    background: #0a0a0a;
+    padding: 16px;
+    border-radius: 0;
+    border: 1px solid #222;
+    overflow-x: auto;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    border: none;
+    color: #ccc;
+}
+
+/* -- Images ------------------------------------------------------- */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* -- Table of contents -------------------------------------------- */
+
+.toc {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    border-radius: 0;
+    padding: 12px 20px;
+    margin-bottom: 24px;
+}
+
+.toc summary {
+    font-weight: 600;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.toc ul {
+    margin: 8px 0 0 0;
+}
+
+.toc li {
+    margin: 4px 0;
+}
+
+.toc a {
+    color: #999;
+}
+
+.toc a:hover {
+    color: #ffffff;
+}
+
+/* -- Blog date ---------------------------------------------------- */
+
+.page-date {
+    display: block;
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 16px;
+}
+
+/* -- Missing page ------------------------------------------------- */
+
+.missing-page {
+    color: #888;
+    font-style: italic;
+}
+
+/* -- Blog layout (single column, nav below content) --------------- */
+
+body[data-layout="blog"] {
+    display: block;
+}
+
+body[data-layout="blog"] article.blog-post {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
+}
+
+body[data-layout="blog"] .nav-toggle,
+body[data-layout="blog"] .nav-backdrop {
+    display: none;
+}
+
+body[data-layout="blog"] .site-nav {
+    position: static;
+    width: auto;
+    transform: none;
+    transition: none;
+    border-right: none;
+    border-top: 1px solid #333;
+    padding: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+body[data-layout="blog"] .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+}
+
+/* -- Scrollbar ---------------------------------------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* -- Selection ---------------------------------------------------- */
+
+::selection {
+    background: #333;
+    color: #ffffff;
+}
+
+/* -- Desktop: static sidebar -------------------------------------- */
+
+@media (min-width: 701px) {
+    body {
+        grid-template-columns: 260px 1fr;
+    }
+
+    .nav-toggle,
+    .nav-backdrop {
+        display: none;
+    }
+
+    .site-nav {
+        position: static;
+        transform: none;
+        transition: none;
+        z-index: auto;
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    article,
+    article.markdown-body {
+        grid-column: 2;
+    }
+
+    article.blog-post {
+        grid-column: 2;
+    }
+}
+
+/* -- Mobile ------------------------------------------------------- */
+
+@media (max-width: 700px) {
+    article,
+    article.markdown-body,
+    article.blog-post {
+        padding: 1.5rem;
+    }
+}
